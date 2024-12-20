@@ -1,5 +1,6 @@
 
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,12 +22,20 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #--------- My Apps--------------
+    "base" , 
+    "Smart" , 
+    #-------------------------------
+    'rest_framework',
+    'drf_spectacular',
+    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +67,36 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smartcity.wsgi.application'
+
+#------------------------------------------------------------------------------
+JAZZMIN_SETTINGS = {
+    "show_ui_builder": True,
+    "welcome_sign": "Welcome to Admin Panel",
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'] , 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Smart City Backend Api Documentation',
+    'DESCRIPTION': 'API',
+    'VERSION': '0.0.1',
+}
+SIMPLE_JWT  = {
+    'ACCESS_TOKEN_LIFETIME' : timedelta(days=15),
+    'REFRESH_TOKEN_LIFETIME' : timedelta(days=1),
+    'BLACKLIST_AFTER_ROTATION' : True ,
+    'AUTH_HEADER_TYPES' : ('Bearer',),
+    'AUTH_TOKEN_CLASSES' : ('rest_framework_simplejwt.tokens.AccessToken',),
+}
+
+
+
 
 
 # Database
@@ -107,9 +146,7 @@ USE_TZ = True
 import os 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT ="static"
 
 
 MEDIA_URL = '/media/'

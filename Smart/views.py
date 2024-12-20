@@ -17,4 +17,3 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse
 @api_view(["GET"])
 def test_main(request) : 
    return Response({"msg" : "Test done"} , status=status.HTTP_200_OK)
-
