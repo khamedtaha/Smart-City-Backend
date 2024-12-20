@@ -51,13 +51,13 @@ class Resident(models.Model):
       ('Femme', 'Femme'),
    ]
 
-   nom = models.CharField(max_length=255)
-   prenom = models.CharField(max_length=255)
-   date_naissance = models.DateField()
-   lieu_naissance = models.CharField(max_length=255)
-   sexe = models.CharField(max_length=10, choices=SEXE_CHOICES)
-   numero_carte_identite = models.CharField(max_length=50, unique=True)
-   permission_parentale = models.BooleanField()
+   nom = models.CharField(max_length=255 , blank= True , null = True)
+   prenom = models.CharField(max_length=255 , blank= True , null = True)
+   date_naissance = models.DateField(blank= True , null = True)
+   lieu_naissance = models.CharField(max_length=255, blank= True , null = True)
+   sexe = models.CharField(max_length=10, choices=SEXE_CHOICES, blank= True , null = True)
+   numero_carte_identite = models.CharField(max_length=50, unique=True, blank= True , null = True)
+   permission_parentale = models.BooleanField(blank= True , null = True)
 
    def __str__(self):
       return f"{self.nom} {self.prenom}"

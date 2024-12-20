@@ -72,6 +72,11 @@ WSGI_APPLICATION = 'smartcity.wsgi.application'
 JAZZMIN_SETTINGS = {
     "show_ui_builder": True,
     "welcome_sign": "Welcome to Admin Panel",
+    "site_icon": "logo/1.png",
+    "site_logo": "logo/1.png",
+    "site_logo_classes": "custom-logo login-logo" ,
+    "login_logo": "logo/0.png",
+    "custom_css": "css/jazzmin.css",
 }
 
 
@@ -146,8 +151,12 @@ USE_TZ = True
 import os 
 
 STATIC_URL = '/static/'
-STATIC_ROOT ="static"
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

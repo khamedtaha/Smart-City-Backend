@@ -1,0 +1,13 @@
+.custom-logo{
+   opacity: 1 !important;
+   height: 50px !important;
+   width: 50px !important;
+   box-shadow: none !important  ;
+   align-items: center !important;
+   margin : auto  10px auto auto !important
+
+}
+.login-page .brand-image {
+   width: 150px;   /* Adjust width as needed */
+   height: 150px;   /* Maintain aspect ratio or set a specific height */
+}
