@@ -21,6 +21,16 @@ class Hotel(models.Model):
    def __str__(self):
       return f"{self.nom}"
 
+class HotelOffre(models.Model) : 
+   hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel_offre')
+   is_base = models.BooleanField(blank = True , null= True)
+   name = models.CharField(max_length=255)
+   prix = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Prix optionnel
+   def __str__(self) : 
+      return f"{self.name}"
+
+
+
 class HotelImage(models.Model):
    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='images_hotel')
    image = models.ImageField(upload_to='hotel_images/')  # Upload image file or path

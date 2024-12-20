@@ -40,6 +40,10 @@ class PlaceTypeAdmin(admin.ModelAdmin):
    list_display = ('name',)
    search_fields = ('name',)
 
+@admin.register(HotelOffre)
+class PlaceTypeAdmin(admin.ModelAdmin):
+   list_display = ('name', 'is_base' , 'prix'  ,'hotel')
+   search_fields = ('name', 'prix')
 
 # Place Admin
 @admin.register(Place)

@@ -35,10 +35,15 @@ def test_main(request) :
 class HotelViewSet(viewsets.ModelViewSet):
    queryset = Hotel.objects.all()
    serializer_class = HotelSerializer
-
+   
+   def get_queryset(self) :
+      return Hotel.objects.all().prefetch_related(
+         'images_hotel',         # Prefetch related images
+         'hotel_offre'           # Prefetch related offers
+      )
    def get_serializer_context(self):
       context = super().get_serializer_context()
-      context['request'] = self.request  # لإرجاع URL كامل للصور
+      context['request'] = self.request  
       return context
 
 

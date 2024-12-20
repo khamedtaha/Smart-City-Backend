@@ -5,7 +5,7 @@ from .models import *
 
 class HotelSerializer(serializers.ModelSerializer):
    images_hotel = serializers.SerializerMethodField() 
-
+   hotel_offre_base = serializers.SerializerMethodField()
    class Meta:
       model = Hotel
       fields = '__all__'
@@ -19,6 +19,15 @@ class HotelSerializer(serializers.ModelSerializer):
                'description': image.description
             }
             for image in obj.images_hotel.all()
+      ]
+   def get_hotel_offre_base(self, obj):
+      return [
+            {
+               'id': offre.id,
+               'name': offre.name,
+               'prix': offre.prix
+            }
+            for offre in obj.hotel_offre.filter(is_base=True)  # Only include offers where is_base=True
       ]
 
 class PlaceImageSerializer(serializers.ModelSerializer):
