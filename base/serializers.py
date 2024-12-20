@@ -42,3 +42,10 @@ class ReservationSer(serializers.ModelSerializer) :
    class Meta : 
       model = Reservation 
       fields = "__all__"
+
+
+class BlackListSer(serializers.ModelSerializer) : 
+
+   class Meta : 
+      model = BlackList 
+      fields = "__all__"

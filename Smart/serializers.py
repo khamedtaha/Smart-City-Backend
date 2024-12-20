@@ -48,3 +48,12 @@ class PlaceSerializer(serializers.ModelSerializer):
    class Meta:
       model = Place
       fields = ['id', 'name', 'place_type', 'description', 'cover_image', 'loction', 'images_place']
+
+
+class InputSer(serializers.ModelSerializer):
+   input_data = serializers.CharField(write_only=True)
+   language =serializers.CharField(write_only=True)  
+
+   class Meta : 
+      model = Place
+      fields = ["input_data" , "language"]

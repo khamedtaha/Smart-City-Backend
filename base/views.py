@@ -214,3 +214,52 @@ def get_Reservation_hauberge(request , pk_hauberge) :
       return Response(ser.data , status=status.HTTP_200_OK)
    except : 
       Response({"msg" : "error exists"} , status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+@extend_schema(
+   description="Verify if a person with the given ID card number is present in the blacklist",
+
+   responses={
+      200: OpenApiResponse(description="A successful response indicating whether the person is in the blacklist or not."),
+      400: OpenApiResponse(description="Bad request, invalid ID card number."),
+   }
+)
+@api_view(['GET'])
+def verify_in_blaklist(request , id_card) : 
+   if BlackList.objects.filter(numero_carte_identite = id_card).exists() : 
+      return Response({"msg" : "This person is in the blacklist, handle with care ."})
+   else : 
+      return Response({"msg" : "This person is not in the blacklist ."})
+   
+
+
+
+@extend_schema(
+   description="Create a new reservation for a specific Hauberge.",
+   request=ReservationSer,
+   responses={
+      201: OpenApiResponse(description="A successful response with the created reservation."),
+      400: OpenApiResponse(description="Bad request, invalid data or error.")
+   }
+)
+@api_view(['POST'])
+def create_reservation_hauberge(request, pk_hauberge):
+
+   try:
+      # Add the Hauberge foreign key to the reservation data
+      data = request.data.copy()
+      data['hauberge'] = pk_hauberge  # Automatically associate with the Hauberge by pk_hauberge
+   
+      # Serialize the data and validate it
+      ser = ReservationSer(data=data)
+      if ser.is_valid():
+         # Save the new reservation
+         ser.save()
+         return Response(ser.data, status=status.HTTP_201_CREATED)
+      else:
+            return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
+   except Exception as e:
+      return Response({"msg": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
