@@ -156,3 +156,5 @@ class Resident_id(APIView) :
             return Response({"msg" : "The process of updating resident information has been successfully completed"} , status=status.HTTP_201_CREATED)
          else : 
             return Response({"msg" : "The process of updating resident information has not been successfully completed"} , status=status.HTTP_400_BAD_REQUEST)
+
+
