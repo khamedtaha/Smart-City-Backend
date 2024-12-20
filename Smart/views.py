@@ -51,3 +51,16 @@ class HotelViewSet(viewsets.ModelViewSet):
 class PlaceViewSet(viewsets.ModelViewSet):
    queryset = Place.objects.prefetch_related('images_place').select_related('place_type')  # تحسين الأداء
    serializer_class = PlaceSerializer
+
+
+@extend_schema(
+   description="This endpoint retrieves a list of PlacesType ",
+   responses={
+      200: OpenApiResponse(description="A successful response with a list of hotels."),
+   }
+)
+@api_view(["GET"])
+def list_place_type(request) : 
+   all_place_type  = PlaceType.objects.all()
+   ser = PlaceTypeSerializer(all_place_type , many = True)
+   return Response(ser.data , status=status.HTTP_200_OK)

@@ -11,6 +11,6 @@ router.register(r'hotels', HotelViewSet, basename='hotel')
 router.register(r'places', PlaceViewSet, basename='place')
 
 urlpatterns = [
-   path('test' , views.test_main ) , 
-   path('', include(router.urls))
+   path('', include(router.urls)) , 
+   path('place/types' , views.list_place_type)
 ]

@@ -158,3 +158,59 @@ class Resident_id(APIView) :
             return Response({"msg" : "The process of updating resident information has not been successfully completed"} , status=status.HTTP_400_BAD_REQUEST)
 
 
+@extend_schema(
+   request = LoginSerializer ,
+   description="This is the Login view for hauberge .",
+   responses={
+      200: OpenApiResponse(
+            description="A successful response",
+      )
+   }
+)
+@api_view(['POST'])
+def custom_token_hauberge(request):
+   email = request.data.get("email")
+   password = request.data.get("password")
+
+   # Check if the email and password are provided
+   if not email or not password:
+      return Response({"error": "Email and password are required."}, status=status.HTTP_400_BAD_REQUEST)
+
+   try:
+      user = User.objects.get(username=email)
+      id_hauberge = Hauberge.objects.get(user = user)
+      if user.check_password(password):
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                  "refresh": str(refresh),
+                  "access": str(refresh.access_token) ,
+                  "id_user" : user.id,
+                  "id_resident" : id_hauberge.id
+            }, status=status.HTTP_200_OK)
+
+      else:
+         return Response({"error": "Invalid password."}, status=status.HTTP_401_UNAUTHORIZED)
+
+   except User.DoesNotExist:
+      return Response({"error": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+@extend_schema(
+   request = ReservationSer ,
+   description="This is the get Reservation par id  hauberge .",
+   responses={
+      200: OpenApiResponse(
+            description="A successful response",
+      )
+   }
+)
+@api_view(['GET'])
+def get_Reservation_hauberge(request , pk_hauberge) : 
+   try  : 
+      reservations =  Reservation.objects.filter(hauberge = pk_hauberge )
+      ser  =  ReservationSer( reservations  , many  = True)
+      return Response(ser.data , status=status.HTTP_200_OK)
+   except : 
+      Response({"msg" : "error exists"} , status=status.HTTP_400_BAD_REQUEST)
