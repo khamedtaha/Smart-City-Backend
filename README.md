@@ -21,10 +21,15 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
   **Password :** `SmartAdmin@password`
 
 ## Features
-
+- **Management **
 - **Accommodation Management :**
   - Hotels: Manage hotel details, offers, and cover images .
   - Auberges: Manage auberge details, offers, and associated images .
+  - Hauberge Management .
+  - Hotel integration .
+  - Places Management . 
+  - Resident Mangment . 
+  - Event integration .
 - **AI-Powered Package Recommendation :**
   - Suggests the best accommodation packages based on user-defined budgets and stay durations .
   - Utilizes Optuna for optimizing recommendations.
@@ -36,6 +41,19 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
   - Leverage external APIs for enhanced data aggregation, such as fetching additional tourist attraction details .
 - **Real-Time Language Support :**
   - Provide responses in multiple languages (English, French, and Arabic) based on user preferences.
+- **Hotel Integration**
+   - **Data Synchronization** : Integrate hotel data and functionalities into the broader platform for a consistent user experience across various accommodation types.
+   
+- **Places Management**
+   - **Location Categorization** : Manage the addition, modification, and categorization of various places, enhancing the tourism experience by allowing users to explore and select locations conveniently.
+
+- **Resident Management**
+   - **Long-term Resident Profiles** : Manage resident details, preferences, and communication for personalized services to enhance long-term stays.
+   - **Preference Tracking** : Customize services based on resident preferences to improve customer satisfaction.
+
+- **Event Integration**
+   - **Local Event Linkage** : Link local events with accommodations, offering combined packages for users looking to book stays along with event tickets.
+   - **Enhanced User Experience** : Ensure that users can seamlessly plan their visits by providing both accommodation and event options in one platform.
 
 ## Installation
 
