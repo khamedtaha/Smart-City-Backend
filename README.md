@@ -9,18 +9,21 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
 - Django rest framework simplejwt 5.3.1
 - SQLite 
 
+## API Docs 
+- **`https://smartcity.zsp-dz.com/api/docs/`** 
+
 ## Features
 
 - **Accommodation Management:**
-  - Hotels: Manage hotel details, offers, and cover images.
-  - Auberges: Manage auberge details, offers, and associated images.
+  - Hotels: Manage hotel details, offers, and cover images .
+  - Auberges: Manage auberge details, offers, and associated images .
 - **AI-Powered Package Recommendation:**
-  - Suggests the best accommodation packages based on user-defined budgets and stay durations.
+  - Suggests the best accommodation packages based on user-defined budgets and stay durations .
   - Utilizes Optuna for optimizing recommendations.
 - **Combined Results:**
-  - Combines results from both hotels and auberges for comprehensive user options.
+  - Combines results from both hotels and auberges for comprehensive user options .
 - **Customizable Search Filters:**
-  - Adjust budget and duration ranges dynamically via query parameters.
+  - Adjust budget and duration ranges dynamically via query parameters .
 
 ## Installation
 
