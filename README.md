@@ -6,8 +6,10 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
 - Python 3.10.11
 - Django 5.0.7
 - Django rest framework 3.15.2
-- Django rest framework simplejwt 5.3.1
+- Django Rest Framework SimpleJWT 5.3.1
 - SQLite 
+- Gemini Pro API (for advanced AI-powered features)
+- Optuna (for hyperparameter optimization and recommendation systems)
 
 ## API Docs 
 - [https://smartcity.zsp-dz.com/api/docs/](https://smartcity.zsp-dz.com/api/docs/)
