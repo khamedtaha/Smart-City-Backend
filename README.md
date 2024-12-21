@@ -10,7 +10,7 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
 - SQLite 
 
 ## API Docs 
-- **`https://smartcity.zsp-dz.com/api/docs/`** 
+- [https://smartcity.zsp-dz.com/api/docs/](https://smartcity.zsp-dz.com/api/docs/)
 
 ## Features
 
