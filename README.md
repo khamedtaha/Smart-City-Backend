@@ -85,7 +85,8 @@ Smart-City-Backend is a robust backend solution designed to integrate smart syst
    python manage.py runserver
    ```
 
-## API Endpoints
+## Example API Endpoint 
+ - Exist More Api read docs api 
 
 ### Suggest Package API
 **Endpoint:** `/suggest-package/`
@@ -182,9 +183,54 @@ class Hauberge(models.Model):
 ### Package Optimization
 ```python
 class SuggestPackageView(APIView):
-    def get(self, request):
-        # ... implementation as discussed ...
-        return Response(response_data)
+   def get(self, request):
+      hotel_offres = HotelOffre.objects.filter(is_base=True).values("id", "name", "prix", "hotel__nom")
+      hauberge_offres = HaubergeOffre.objects.all().values("id", "titre", "prix", "hauberge__nom")
+
+      hotel_df = pd.DataFrame(list(hotel_offres))
+      hauberge_df = pd.DataFrame(list(hauberge_offres))
+
+      hotel_df.rename(columns={"hotel__nom": "location_name", "name": "offer_name", "prix": "price"}, inplace=True)
+      hauberge_df.rename(columns={"hauberge__nom": "location_name", "titre": "offer_name", "prix": "price"}, inplace=True)
+
+      hotel_df['type'] = 'hotel'
+      hauberge_df['type'] = 'hauberge'
+
+      combined_df = pd.concat([hotel_df, hauberge_df], ignore_index=True)
+      combined_df = combined_df.dropna(subset=['price'])
+
+      min_budget = int(request.query_params.get("min_budget", 50))
+      max_budget = int(request.query_params.get("max_budget", 500))
+      min_days = int(request.query_params.get("min_days", 1))
+      max_days = int(request.query_params.get("max_days", 10))
+
+      def objective(trial):
+            budget = trial.suggest_int("budget", min_budget, max_budget)  
+            days = trial.suggest_int("days", min_days, max_days)
+
+            filtered_df = combined_df[combined_df['price'] <= budget]
+            if filtered_df.empty:
+               return float('inf')
+
+            return min(filtered_df['price']) * days
+
+      study = optuna.create_study(direction="minimize")
+      study.optimize(objective, n_trials=20)
+
+      
+      best_budget = study.best_params['budget']
+      best_days = study.best_params['days']
+      final_offres = combined_df[combined_df['price'] <= best_budget]
+
+      hotel_results = final_offres[final_offres['type'] == 'hotel'].to_dict(orient="records")
+      hauberge_results = final_offres[final_offres['type'] == 'hauberge'].to_dict(orient="records")
+
+      return Response({
+            "best_budget": best_budget,
+            "best_days": best_days,
+            "hotels": hotel_results,
+            "hauberges": hauberge_results
+      })
 ```
 
 ## Contributing
