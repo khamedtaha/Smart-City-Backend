@@ -12,13 +12,13 @@ Smart-City-Backend is a robust backend solution designed to integrate smart syst
 - Optuna (for hyperparameter optimization and recommendation systems)
 
 ## API Docs 
-- [https://smartcity.zsp-dz.com/api/docs/](https://smartcity.zsp-dz.com/api/docs/)
+- [/api/docs/]()
 
 ## Base Dashboard 
-- [https://smartcity.zsp-dz.com/dash/](https://smartcity.zsp-dz.com/dash/)
+- [/dash/]()
   
-  **Username :** `SmartAdmin`  
-  **Password :** `SmartAdmin@password`
+  **Username :** ``  
+  **Password :** ``
 
 ## Features
 - **Management **

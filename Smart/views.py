@@ -174,7 +174,7 @@ def gen_ai(request) :
 
    try:
       # Call your external API (POST request)
-      external_api_url = "https://khamedmohammedtaha.pythonanywhere.com/portfolio/api/boum/"
+      external_api_url = "#"
       payload = {"input": input_data, "language": language}
       headers = {"Content-Type": "application/json"}
       
