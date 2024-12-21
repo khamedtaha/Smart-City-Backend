@@ -2,6 +2,13 @@
 
 Smart-City-Backend is a powerful backend solution designed to integrate smart systems for managing accommodations like hotels and auberges. It leverages the Django framework for building the backend and integrates AI-powered recommendation systems using Optuna to provide personalized packages for users.
 
+## Technologies Used 
+- Python 3.10.11
+- Django 5.0.7
+- Django rest framework 3.15.2
+- Django rest framework simplejwt 5.3.1
+- SQLite 
+
 ## Features
 
 - **Accommodation Management:**
