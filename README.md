@@ -15,8 +15,8 @@ Smart-City-Backend is a powerful backend solution designed to integrate smart sy
 ## Base Dashboard 
 - [https://smartcity.zsp-dz.com/dash/](https://smartcity.zsp-dz.com/dash/)
   
-  **Username:** `admin`  
-  **Password:** `yourpassword`
+  **Username :** `SmartAdmin`  
+  **Password :** `SmartAdmin@password`
 
 ## Features
 
