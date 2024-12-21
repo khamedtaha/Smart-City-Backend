@@ -250,4 +250,4 @@ For questions or inquiries, contact [Mohammed taha Khamed](mailto:khamedkh297@gm
 
 
 ## IMG
-![Logo](images/2024-12-21 101936.png)
+![Logo](img/2024-12-21 101936.png)
