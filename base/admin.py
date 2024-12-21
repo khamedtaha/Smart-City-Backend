@@ -25,34 +25,11 @@ class HaubergeOffreInline(admin.TabularInline):
 
 
 class HaubergeAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'type', 'capacite', 'telephone', 'disponibilite')
-    list_filter = ('type', 'disponibilite')
-    inlines = [HaubergeImageInline, HaubergeOffreInline]
-    ordering = ('nom',)
-    def get_queryset(self, request):
-        # تحديد البيانات المعروضة حسب المستخدم
-        qs = super().get_queryset(request)
-        if request.user.is_superuser:  # المشرف يرى كل البيانات
-            return qs
-        return qs.filter(user=request.user)  # المستخدم يرى بياناته فقط
+   list_display = ('nom', 'type', 'capacite', 'telephone', 'disponibilite')
+   list_filter = ('type', 'disponibilite')
+   inlines = [HaubergeImageInline, HaubergeOffreInline]
+   ordering = ('nom',)
 
-    def save_model(self, request, obj, form, change):
-        # تعيين المستخدم الحالي عند حفظ النموذج
-        if not obj.pk:  # إضافة جديدة
-            obj.user = request.user
-        super().save_model(request, obj, form, change)
-
-    def has_change_permission(self, request, obj=None):
-        # السماح بالتعديل فقط إذا كان مرتبطًا بالمستخدم
-        if obj and obj.user != request.user:
-            return False
-        return super().has_change_permission(request, obj)
-
-    def has_delete_permission(self, request, obj=None):
-        # السماح بالحذف فقط إذا كان مرتبطًا بالمستخدم
-        if obj and obj.user != request.user:
-            return False
-        return super().has_delete_permission(request, obj)
 
 admin.site.register(Hauberge, HaubergeAdmin)
 # Admin configuration for HaubergeImage

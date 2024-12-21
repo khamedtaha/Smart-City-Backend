@@ -56,7 +56,7 @@ class HotelViewSet(viewsets.ModelViewSet):
    }
 )
 class PlaceViewSet(viewsets.ModelViewSet):
-   queryset = Place.objects.prefetch_related('images_place').select_related('place_type')  # تحسين الأداء
+   queryset = Place.objects.prefetch_related('images_place').select_related('place_type')  
    serializer_class = PlaceSerializer
 
 

@@ -5,16 +5,15 @@ from location_field.models.plain import PlainLocationField
 
 
 class Hauberge(models.Model):
+   user = models.OneToOneField(User , on_delete = models.CASCADE ,  blank=False)
    TYPE_CHOICES = [
       ('maison', 'Maison'),
       ('camp', 'Camp'),
    ]
-   
-   user = models.OneToOneField(User , blank = False , on_delete = models.CASCADE)
    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
    capacite = models.IntegerField()
    nom = models.CharField(max_length=255)
-   emplacement = PlainLocationField(blank = True)  # Coordonnées GPS
+   emplacement = PlainLocationField(blank = True)  
    adresse = models.CharField(max_length=255)
    telephone = models.CharField(max_length=20)
    nbr_personne_reserve = models.IntegerField()
