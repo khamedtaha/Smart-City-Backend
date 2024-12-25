@@ -12,10 +12,10 @@ Smart-City-Backend is a robust backend solution designed to integrate smart syst
 - Optuna (for hyperparameter optimization and recommendation systems)
 
 ## API Docs 
-- [http://127.0.0.1:8000//api/docs/]()
+- [http://127.0.0.1:8000/api/docs/]()
 
 ## Base Dashboard 
-- [http://127.0.0.1:8000//dash/]()
+- [http://127.0.0.1:8000/dash/]()
   
   **Username :** `adminkh`  
   **Password :** `admin123`
