@@ -59,7 +59,7 @@ Smart-City-Backend is a robust backend solution designed to integrate smart syst
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Smart-City-Backend.git
+   git clone https://github.com/khamedtaha/Smart-City-Backend.git
    cd Smart-City-Backend
    ```
 
